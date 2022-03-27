@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onUnmounted } from 'vue'
-import { getWordOfTheDay, allWords } from './words'
+import { getWordOfTheDay, invalidGuesses } from './words'
 import Keyboard from './Keyboard.vue'
 import { LetterState } from './types'
 
@@ -73,9 +73,9 @@ function clearTile() {
 function completeRow() {
   if (currentRow.every((tile) => tile.letter)) {
     const guess = currentRow.map((tile) => tile.letter).join('')
-    if (!allWords.includes(guess) && guess !== answer) {
+    if (guess !== answer && invalidGuesses.includes(guess)) {
       shake()
-      showMessage(`Not in word list`)
+      showMessage(`That's a real word`)
       return
     }
 
@@ -179,7 +179,7 @@ function genResultGrid() {
     </div>
   </Transition>
   <header>
-    <h1>VVORDLE</h1>
+    <h1>WORDN'TLE</h1>
     <a
       id="source-link"
       href="https://github.com/yyx990803/vue-wordle"
