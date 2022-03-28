@@ -2,6 +2,7 @@
 import { onUnmounted, ref } from 'vue';
 import { board, success, shakeRowIndex, letterStates, onKey, onKeyup, message } from './game';
 import Keyboard from './Keyboard.vue'
+import Info from './Info.vue'
 
 onUnmounted(() => {
   window.removeEventListener('keyup', onKeyup)
@@ -17,23 +18,31 @@ const infoMenuOpen = ref(false);
       <pre v-if="grid">{{ grid }}</pre>
     </div>
   </Transition>
-  <header>
-    <h1>
-      WORDN'TLE
-      <span
-        class="iconify"
-        data-icon="mdi-help-circle-outline"
-      />
-    </h1>
-    <!-- <a
-      id="source-link"
-      href="https://github.com/yyx990803/vue-wordle"
-      target="_blank"
-      >Source</a
-    > -->
 
-
-  </header>
+  <v-toolbar>
+    <v-row no-gutters justify="center" align="center">
+      <v-col cols="1">
+        <v-dialog :transition="false">
+          <template v-slot:activator="{ props }">
+            <v-btn
+              icon="mdi-help-circle-outline"
+              v-bind="props"
+              class="mb-1"
+            />
+          </template>
+          <Info />
+        </v-dialog>
+      </v-col>
+      <v-col cols="10">
+        <v-row no-gutters justify="center">
+          <h1>
+            WORDN'TLE
+          </h1>
+        </v-row>
+      </v-col>
+      <v-col cols="1"/>
+    </v-row>
+  </v-toolbar>
   <div id="board">
     <div
       v-for="(row, index) in board"
@@ -64,7 +73,11 @@ const infoMenuOpen = ref(false);
       </div>
     </div>
   </div>
-  <Keyboard @key="onKey" :letter-states="letterStates" />
+  <v-row justify="center">
+    <v-col cols="10" sm="6" md="4" lg="3" xl="3">
+      <Keyboard @key="onKey" :letter-states="letterStates" />
+    </v-col>
+  </v-row>
 </template>
 
 <style scoped>
