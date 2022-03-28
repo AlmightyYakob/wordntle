@@ -1,9 +1,8 @@
-# Vue Wordle
+# Wordn'tle - A daily fake word game [![Netlify Status](https://api.netlify.com/api/v1/badges/6a4e7cc3-f123-4bfc-8c45-47d222a1e146/deploy-status)](https://app.netlify.com/sites/wordntle/deploys)
 
-[Live demo](https://vue-wordle.netlify.app/)
+Wordn'tle is a variation of wordle that uses generated fake words instead of real words. These words are grammatically plausible english words, and aren't just a string of 5 random characters like `ikghj`. An example of a valid answer is `shamp`.
 
-A Vue implementation of the [Wordle game](https://www.powerlanguage.co.uk/wordle/). This is just for fun and doesn't aim to 100% replicate the original.
+Based on Evan You's [vue-wordle](https://github.com/yyx990803/vue-wordle) Vue Wordle implementation.
 
-You can make your own Wordle and send it to friends by base64-encoding a word and include it as the URL query, e.g. https://vue-wordle.netlify.app/?YmxpbXA= (this will also allow words that are not in the dictionary.)
+[Live demo](https://wordntle.netlify.app/)
 
-This repository is open sourced for learning purposes only - the original creator(s) of Wordle own all applicable rights to the game itself.
