@@ -71,12 +71,12 @@ function clearTile() {
 function completeRow() {
   if (currentRow.every((tile) => tile.letter)) {
     const guess = currentRow.map((tile) => tile.letter).join('')
-    if (guess !== answer && allRealWords.includes(guess)) {
+    if (guess !== answer && allRealWords.has(guess)) {
       shake()
       showMessage(`That's a real word`)
       return
     }
-    if (guess !== answer && !allFakeWords.includes(guess)) {
+    if (guess !== answer && !allFakeWords.has(guess)) {
       shake()
       showMessage(`Not in fake word list`)
       return

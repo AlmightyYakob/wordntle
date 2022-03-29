@@ -15031,10 +15031,10 @@ export const allowedGuesses = [
 ]
 
 // All fake words
-export const allFakeWords = [...answers, ...allowedGuesses]
+export const allFakeWords = new Set([...answers, ...allowedGuesses])
 
 // This is the list of all real 5 letter english words
-export const allRealWords = [
+export const allRealWords = new Set([
   'aahed',
   'aalii',
   'aargh',
@@ -30953,4 +30953,4 @@ export const allRealWords = [
   'zudda',
   'zulus',
   'zunis',
-]
+])
