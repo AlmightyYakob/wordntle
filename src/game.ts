@@ -1,5 +1,5 @@
 import { onUnmounted, ref } from 'vue'
-import { getWordOfTheDay, invalidGuesses } from './words'
+import { getWordOfTheDay, allFakeWords, allRealWords } from './words'
 import { LetterState } from './types'
 
 // Get word of the day
@@ -71,9 +71,14 @@ function clearTile() {
 function completeRow() {
   if (currentRow.every((tile) => tile.letter)) {
     const guess = currentRow.map((tile) => tile.letter).join('')
-    if (guess !== answer && invalidGuesses.includes(guess)) {
+    if (guess !== answer && allRealWords.includes(guess)) {
       shake()
       showMessage(`That's a real word`)
+      return
+    }
+    if (guess !== answer && !allFakeWords.includes(guess)) {
+      shake()
+      showMessage(`Not in fake word list`)
       return
     }
 
