@@ -20,7 +20,7 @@ export const board = $ref(
 )
 
 // Current active row.
-let currentRowIndex = $ref(0)
+export let currentRowIndex = $ref(0)
 const currentRow = $computed(() => board[currentRowIndex])
 
 // Feedback state: message and shake

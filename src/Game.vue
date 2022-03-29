@@ -1,6 +1,16 @@
 <script setup lang="ts">
 import { onUnmounted, ref } from 'vue';
-import { board, success, shakeRowIndex, letterStates, onKey, onKeyup, message } from './game';
+import {
+  board,
+  success,
+  shakeRowIndex,
+  letterStates,
+  onKey,
+  onKeyup,
+  message,
+  grid,
+  currentRowIndex,
+} from './game';
 import Keyboard from './Keyboard.vue'
 import Info from './Info.vue'
 
@@ -22,12 +32,14 @@ const infoMenuOpen = ref(false);
   <v-toolbar>
     <v-row no-gutters justify="center" align="center">
       <v-col cols="1">
-        <v-dialog :transition="false">
+        <v-dialog v-model="infoMenuOpen" :transition="false">
           <template v-slot:activator="{ props }">
             <v-btn
               icon="mdi-help-circle-outline"
               v-bind="props"
               class="mb-1"
+              flat
+              :ripple="false"
             />
           </template>
           <Info />
